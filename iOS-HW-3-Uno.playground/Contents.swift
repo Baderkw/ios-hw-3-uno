@@ -113,6 +113,8 @@ struct Card {
 var cards: [Card] = []
 
 for indexColor in 1 ... 4 {
+    
+    //Choosing card color.
     var cardColor = ""
     if indexColor == 1 {
         cardColor = "Blue"
@@ -124,19 +126,29 @@ for indexColor in 1 ... 4 {
         cardColor = "Green"
     }
     
+    //Adding zero.
     cards.append(Card(color: cardColor, number: 0))
     
     
-    
+    //Adding numbers from 0 to 9 and action cards.
     for _ in 1 ... 2 {
+
+        //Adding numbers from 0 to 9.
         for i in 1 ... 9 {
+            cards.append(Card(color: cardColor, number: i))
+        }
+        
+        //Adding action cards.
+        for i in 10 ... 12 {
             cards.append(Card(color: cardColor, number: i))
         }
     }
     
-    for i in 10 ... 14 {
+    //Adding wild and wild draw.
+    for i in 13 ... 14 {
         cards.append(Card(color: cardColor, number: i))
     }
+    
 }
 
 
