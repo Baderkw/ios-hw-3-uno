@@ -35,7 +35,7 @@ import UIKit
  */
 
 
-var blue_5 = UIImage(named: "Blue_6.png")
+var blue_5 = UIImage(named: "Blue_5.png")
 var red_9 = UIImage(named: "Red_9.png")
 
 var green_Skip = UIImage(named: "Green_Skip.png")
@@ -87,7 +87,57 @@ var wild_Draw = UIImage(named: "Wild_Draw.png")
 
 /// قم بإنشاء الستركت هنا
 
-// struct ...
+struct Card {
+    var color: String
+    var number: Int
+    
+    func imageName() -> String {
+        switch number {
+        case 10:
+            return "\(color)_Draw"
+        case 11:
+            return "\(color)_Reverse"
+        case 12:
+            return "\(color)_Skip"
+        case 13:
+            return "Wild"
+        case 14:
+            return "Wild_Draw"
+        default:
+            return "\(color)_\(number)"
+        }
+    }
+    
+}
+
+var cards: [Card] = []
+
+for indexColor in 1 ... 4 {
+    var cardColor = ""
+    if indexColor == 1 {
+        cardColor = "Blue"
+    }else if indexColor == 2 {
+        cardColor = "Red"
+    }else if indexColor == 3 {
+        cardColor = "Yellow"
+    }else {
+        cardColor = "Green"
+    }
+    
+    cards.append(Card(color: cardColor, number: 0))
+    
+    
+    
+    for _ in 1 ... 2 {
+        for i in 1 ... 9 {
+            cards.append(Card(color: cardColor, number: i))
+        }
+    }
+    
+    for i in 10 ... 14 {
+        cards.append(Card(color: cardColor, number: i))
+    }
+}
 
 
 
@@ -95,11 +145,11 @@ var wild_Draw = UIImage(named: "Wild_Draw.png")
 
 // لا تقم بإزالة الملاحظات إلا عند وصولك للمطلوب الثالث
 
-//
-//let randomCard = cards.randomElement()!
-//let randomCardImage = UIImage(named: randomCard.imageName())
-//
-//
-//let cardImages = cards.map{UIImage(named: $0.imageName())}
-//randomCardImage
-//cardImages
+
+let randomCard = cards.randomElement()!
+let randomCardImage = UIImage(named: randomCard.imageName())
+
+
+let cardImages = cards.map{UIImage(named: $0.imageName())}
+randomCardImage
+cardImages
